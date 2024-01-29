@@ -11,7 +11,7 @@ export type EducationProps = SliceComponentProps<Content.EducationSlice>;
 /**
  * Component for "Experience" Slices.
  */
-const Experience = ({ slice }: EducationProps): JSX.Element => {
+const Education = ({ slice }: EducationProps): JSX.Element => {
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -40,4 +40,4 @@ const Experience = ({ slice }: EducationProps): JSX.Element => {
   );
 };
 
-export default Experience;
+export default Education;
