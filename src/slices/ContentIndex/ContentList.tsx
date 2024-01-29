@@ -10,10 +10,9 @@ import { Content } from "@prismicio/client";
 gsap.registerPlugin(ScrollTrigger);
 
 type ContentListProps = {
-  items: Content.ProjectsDocument[] | Content.ProjectsDocument[];
+  items: Content.ExperiencesDocument[] | Content.ProjectsDocument[];
   contentType: Content.ContentIndexSlice["primary"]["content_type"];
   fallbackItemImage: Content.ContentIndexSlice["primary"]["fallback_item_image"];
-  description: Content.ContentIndexSlice["primary"]["description"];
   viewMoreText: Content.ContentIndexSlice["primary"]["view_more_text"];
 };
 
@@ -21,7 +20,6 @@ export default function ContentList({
   items,
   contentType,
   fallbackItemImage,
-  description,
   viewMoreText = "Read More",
 }: ContentListProps) {
   const component = useRef(null);
@@ -32,8 +30,7 @@ export default function ContentList({
   const [hovering, setHovering] = useState(false);
   const lastMousePos = useRef({ x: 0, y: 0 });
 
-  const urlPrefix = contentType === "1Projects" ? "/projects" : (contentType === "3Music" ? "/music" : "/experience");
-
+  const urlPrefix = contentType === "1Projects" ? "/projects" : "/experience";
 
   useEffect(() => {
     // Animate list-items in with a stagger
@@ -118,7 +115,12 @@ export default function ContentList({
     const image = isFilled.image(item.data.hover_image)
       ? item.data.hover_image
       : fallbackItemImage;
-    return asImageSrc(image);
+    return asImageSrc(image, {
+      fit: "crop",
+      w: 220,
+      h: 320,
+      exp: -10,
+    });
   });
 
   // Preload images
@@ -134,7 +136,7 @@ export default function ContentList({
     <>
       <ul
         ref={component}
-        className="grid border-b border-b-slate-100"
+        className="grid border-b border-b-pallets-100"
         onMouseLeave={onMouseLeave}
       >
         {items.map((post, index) => (
@@ -146,7 +148,7 @@ export default function ContentList({
           >
             <a
               href={`${urlPrefix}/${post.uid}`}
-              className="flex flex-col justify-between border-t border-t-slate-100 py-10  text-slate-200 md:flex-row "
+              className="flex flex-col justify-between border-t border-t-pallets-100 py-10  text-pallets-200 md:flex-row "
               aria-label={post.data.title || ""}
             >
               <div className="flex flex-col">
@@ -158,13 +160,9 @@ export default function ContentList({
                     </span>
                   ))}
                 </div>
-                <span className='text-pallets-100 text-base '>
-                    {post.data.description}
-                </span>
               </div>
               <span className="ml-auto flex items-center gap-2 text-xl font-medium md:ml-0">
                 {viewMoreText} <MdArrowOutward />
-                
               </span>
             </a>
           </li>
