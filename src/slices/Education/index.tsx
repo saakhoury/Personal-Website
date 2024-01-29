@@ -6,12 +6,12 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 /**
  * Props for `Experience`.
  */
-export type ExperienceProps = SliceComponentProps<Content.ExperienceSlice>;
+export type EducationProps = SliceComponentProps<Content.EducationSlice>;
 
 /**
  * Component for "Experience" Slices.
  */
-const Experience = ({ slice }: ExperienceProps): JSX.Element => {
+const Experience = ({ slice }: EducationProps): JSX.Element => {
   return (
     <Bounded
       data-slice-type={slice.slice_type}
