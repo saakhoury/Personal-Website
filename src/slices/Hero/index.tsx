@@ -77,7 +77,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <Shapes />
         <div className="col-start-1 md:row-start-1">
           <h1 
-            className = "mb-8 text-[clamp(10rem,5vmin,40rem)] font-extrabold leading-none tracking-tighter" 
+            className = "mb-8 text-[clamp(5rem,5vmin,40rem)] font-extrabold leading-none tracking-tighter" 
             aria-label={
               slice.primary.first_name + " " + slice.primary.last_name
             }
