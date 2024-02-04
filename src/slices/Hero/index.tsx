@@ -31,9 +31,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         opacity: 1,
         rotate: 0,
         ease: "elastic.out(1,0,3)",
-        duration: 1,
+        duration: 0.8,
         transformOrigin: "left top",
-        delay: 0.5, 
+        delay: 0.2, 
         stagger: {
           each: 0.1,
           from: 'random',
@@ -77,7 +77,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <Shapes />
         <div className="col-start-1 md:row-start-1">
           <h1 
-            className = "mb-8 text-[clamp(5rem,5vmin,40rem)] font-extrabold leading-none tracking-tighter" 
+            className = "mb-8 text-[clamp(7rem,2vmin,5rem)] font-extrabold leading-none tracking-tighter" 
             aria-label={
               slice.primary.first_name + " " + slice.primary.last_name
             }
@@ -89,8 +89,11 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             {renderLetters(slice.primary.last_name, "last")}
           </span>
         </h1>
-        <span className="job-title block bg-gradient-to-tr from-pallets-500 via-pallets-200 to-pallets-500 bg-clip-text text-7x3 font-bold uppercase tracking-[.4em] text-transparent opacity-100 md:text-7x3 mt-400 text-lg">
-          {slice.primary.tag_line}
+        <span className="job-title text-[clamp(1rem,2vmin,3rem)] block text-pallets-300">
+            {slice.primary.tag_line}
+        </span>
+        <span className="job-title text-[clamp(1rem,2vmin,3rem)] block text-pallets-300">
+            Actively seeking Summer 2024 internships.
         </span>
         </div>
       </div>

@@ -28,16 +28,18 @@ const ProjectIndex = async ({
       ? experiences
       : music;
 
+  
+
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Heading size="xl" className="mb-8">
+      <Heading size="xl" className="job-title mb-8">
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (
-        <div className="prose prose-xl prose-invert mb-10">
+        <div className="job-title prose prose-xl prose-invert mb-10">
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}
